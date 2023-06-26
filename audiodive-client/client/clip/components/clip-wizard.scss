@@ -1,0 +1,413 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.template-list {
+  line-height: 22px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.clip-wizard {
+
+
+  button {
+    width:auto;
+  }
+
+  border-radius: 1px;
+  //font-size: 15px;
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  width:100%;
+  //text-align: center;
+  padding: 30px;
+  padding-bottom: 50px;
+
+  .clip-wizard-import {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .file-drop-container {
+    width:100%;
+    margin-bottom: 25px;
+  }
+
+  .bp3-menu-item {
+    max-width: 400px;
+  }
+
+  .bp3-dark .bp3-tab-indicator {
+    background-color: rgba(72, 175, 240, 0.2);
+    box-shadow: 0 3px 0 rgba(72, 175, 240, 1);
+  }
+  .bp3-tab-indicator-wrapper .bp3-tab-indicator {
+    position: absolute;
+    bottom: -5px;
+    left: -8px;
+    background-color: #106ba3;
+    height: 40px;
+    right: -8px;
+    /* z-index: 1; */
+  }
+
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    //font-weight: 300;
+    //font-size: 20px;
+    //line-height: 30px;
+    //text-align: center;
+  }
+
+  h5 {
+    //margin-top: 15px;
+  }
+
+  .wizard-actions {
+    text-align: center;
+  }
+
+  .step-record {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+
+  .bp3-form-group {
+    margin-bottom: 20px;
+  }
+
+  .clip-wizard-step > .bp3-card {
+    box-shadow: none;
+  }
+
+  .clip-preview-container {
+    position: relative;
+    z-index: 2;
+    //top: 0;
+    //left: 20px;
+    //margin-top: 20px;
+  }
+
+  .audio-recorder {
+    background: $light-gray5;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 0;
+    font-family: inherit;
+    font-size: 13px;
+
+    &.vjs-record.video-js .vjs-control.vjs-fullscreen-control {
+      display: none;
+    }
+
+    .vjs-time-control {
+      padding: 0;
+    }
+
+    .vjs-control-bar {
+      background: $dark-gray2;
+    }
+  }
+
+  .bp3-button {
+    //font-size: 15px;
+  }
+
+  .word-controls {
+    display: flex;
+    padding: 10px;
+    background: $light-gray5;
+  }
+
+
+  .wavesurfer-container {
+    width: 100%;
+  }
+
+  .element-controls {
+
+    margin-bottom: 30px;
+
+    &.selected {
+
+      .bp3-control.bp3-switch {
+        color:$blue5;
+      }
+
+      .bp3-card, .bp3-card:hover {
+        box-shadow: 0 0 0 1px $blue2;
+        background: rgba(16, 107, 163, 0.1);
+      }
+
+      position: relative;
+      z-index: 1;
+    }
+
+    .bp3-card {
+      padding: 10px 10px 0;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 5px;
+
+      img {
+        margin-bottom: 10px;
+      }
+
+      .bp3-form-group {
+        margin-bottom: 10px;
+      }
+    }
+
+
+
+    &.inactive {
+      .bp3-card {
+        //transform: scale(0.2);
+        //opacity: 0.5;
+      }
+    }
+  }
+
+  .background-controls {
+    position: relative;
+
+    img {
+      position: absolute;
+      right: 0;
+      top: -24px;
+    }
+  }
+
+  .no-template {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+
+    h4 {
+      color:$gray3;
+    }
+  }
+
+  .size-input .bp3-input-group .bp3-input {
+    max-width: 60px;
+  }
+
+  .bp3-tab-list {
+    justify-content: space-between;
+  }
+
+  .bp3-tab {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Oswald';
+  }
+
+
+  .upload-input {
+    justify-content: center;
+  }
+
+  .bp3-card {
+    //text-align: center;
+    position: relative;
+    display: flex;
+    justify-items: center;
+    //justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-right: 0;
+
+
+  }
+
+  h4 {
+    margin-bottom: 20px;
+  }
+
+  .bp3-tab-panel {
+    padding-right: 20px;
+    max-height: 320px;
+
+  }
+
+  .wizard-controls {
+    overflow: auto;
+    padding: 1px;
+    min-height: 200px;
+  }
+
+  @media (min-width: 481px) {
+
+    .wizard-controls {
+      //padding-left: 20px;
+    }
+
+  }
+
+
+  .clip-wizard-preview {
+    min-height: 540px;
+
+    .preview-header {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .preview-header {
+        display: none;
+      }
+    }
+
+    .clip-wizard-preview-form {
+      width: 100%;
+      //padding-left: 20px;
+      //margin-left: 360px;
+
+      .transcript-editor {
+        margin:0;
+        padding: 10px 0;
+
+        .clip-block {
+          padding-top:0;
+        }
+
+        .clip-block-words {
+          margin-right: 0;
+        }
+      }
+    }
+
+
+    .clip-wizard-steps {
+      margin: 0 auto 20px;
+      //text-align: center;
+      display: block;
+    }
+  }
+
+  .loading-message {
+    margin-top: 10px;
+  }
+
+  .clip-template-preview {
+    text-align: left;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .import-controls {
+    width: 100%;
+  }
+
+  .time-input {
+    .bp3-tag {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+$brand-primary: $pt-intent-primary;
+$white: #fff;
+$grey-light: $gray5;
+
+%remain-steps{
+  &:after{
+    background-color: $grey-light;
+  }
+}
+
+.multi-steps{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+
+  > li{
+    counter-increment: stepNum;
+    text-align: center;
+    display: table-cell;
+    position: relative;
+    color: $brand-primary;
+
+    &:before{
+      content: counter(stepNum);
+      font-family: inherit;
+      font-weight: 700;
+      display: block;
+      margin: 0 auto 4px;
+      background-color: $white;
+      width: 36px;
+      height: 36px;
+      line-height: 32px;
+      text-align: center;
+      border:{
+        width: 2px;
+        style: solid;
+        color: $brand-primary;
+        radius: 50%;
+      }
+    }
+    &:after{
+      content: '';
+      height: 3px;
+      width: 100%;
+      background-color: $brand-primary;
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      z-index: -1;
+    }
+
+    &:last-child{
+      &:after{
+        display: none;
+      }
+    }
+
+    &.is-active{
+      @extend %remain-steps;
+      &:before{
+        background-color: $white;
+        border-color: $brand-primary;
+      }
+
+      ~ li{
+        color: #808080;
+        @extend %remain-steps;
+        &:before{
+          background-color: $grey-light;
+          border-color: $grey-light;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .clip-wizard {
+    padding:.75em;
+  }
+}
+
+.bp3-dark {
+  h3 {
+    //color: $gray1;
+  }
+
+  .word-controls {
+    background-color: $dark-gray4;
+  }
+}

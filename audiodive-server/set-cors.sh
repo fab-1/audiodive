@@ -1,0 +1,1 @@
+gsutil cors set cors-config.json gs://static-audiodive/

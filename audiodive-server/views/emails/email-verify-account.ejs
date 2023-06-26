@@ -1,0 +1,52 @@
+<table role="presentation" border="0" cellpadding="0" cellspacing="18" bgcolor="#fff" width="570"
+       class="vb-container"
+       style="border-collapse: separate; width: 100%; background-color: #fff; mso-cellspacing: 18px; border-spacing: 18px; max-width: 570px; -mru-width: 0px;">
+
+  <tbody>
+  <tr>
+    <td valign="top" align="center">
+      <table role="presentation" cellpadding="12" border="0" align="center" cellspacing="0"
+             style="border-spacing: 0; mso-padding-alt: 12px 12px 12px 12px;">
+        <tbody>
+
+        <tr>
+          <td width="100%" valign="top" align="left"
+              style="font-weight: normal; color: #3f3f3f; font-size: 18px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; text-align: left;">
+            <span style="font-weight: normal;"><strong>Welcome, <%= fullName %>!</strong></span></td>
+        </tr>
+        <tr>
+          <td class="long-text links-color" width="100%" valign="top" align="left"
+              style="font-weight: normal; color: #10161A; font-size: 14px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; text-align: left; line-height: normal;">
+
+            <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;">You're almost ready to get started. Just click the button below to confirm the email address for your account:</p></td>
+        </tr>
+
+        <tr>
+          <td width="auto" valign="middle" align="center" bgcolor="#137cbd" style="text-align: center; font-weight: normal; padding: 12px; padding-left: 14px; padding-right: 14px; background-color: #137cbd; color: #fff; font-size: 22px; font-family: Arial, Helvetica, sans-serif; border-radius: 2px;">
+            <a
+              style="text-decoration: none; font-weight: normal; color: #fff; font-size: 22px; font-family: Arial, Helvetica, sans-serif;"
+              href="<%= url.resolve(sails.config.custom.baseUrl,'/email/confirm')+'?token='+encodeURIComponent(token) %>">Confirm Account</a></td>
+        </tr>
+
+        <tr>
+          <td class="long-text links-color" width="100%" valign="top" align="left"
+              style="font-weight: normal; color: #10161A; font-size: 11px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; text-align: left; line-height: normal;">
+            <p style="margin: 1em 0px; margin-top: 0px; text-align: center;">If you have any trouble, try pasting this link in your browser:</p>
+            <p style="margin: 1em 0px; margin-bottom: 0px; text-align: center;"><%= url.resolve(sails.config.custom.baseUrl,'/email/confirm')+'?token='+encodeURIComponent(token) %></p></td>
+        </tr>
+
+        <tr>
+          <td class="long-text links-color" width="100%" valign="top" align="left"
+              style="font-weight: normal; color: #10161A; font-size: 14px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; text-align: left; line-height: normal;">
+
+            <p style="margin-bottom: 5px;">Sincerely,</p>
+            <p style="margin-top: 0px;">The AudioDive Team</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,83 @@
+<% if(typeof me === 'undefined') {
+    // In case we're displaying the 404 or 500 page and relevant code in the "custom" hook was not able to run,
+    // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
+    var me = undefined;
+} %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audiodive</title>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: blob:">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+
+    <meta name="theme-color" content="#202b33">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+   
+    <meta property="og:image:width" content="1500">
+    <meta property="og:image:height" content="800">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta name="apple-touch-fullscreen" content="yes" />
+
+    <link rel="stylesheet" href="<%- stylesPath %>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="/js/tsparticles2.min.js" ></script>
+
+
+    <% /* Script tags should normally be included further down the page- but any
+    scripts that load fonts (e.g. Fontawesome ≥v5) are special exceptions to the
+    rule. (Include them up here along with any hard-coded «link» tags for Typekit,
+    Google Fonts, etc. - above the «body» to prevent the page flickering when fonts
+    load.) */ %>
+
+    <% /* Certain scripts, normally analytics tools like Google Tag Manager and
+    Google Analytics, should only be included in production: */
+    if (sails.config.environment === 'production') { %>
+        <!-- Google Analytics, Google Tag Manager, etc. -->
+    <% }
+    /* Otherwise, any such scripts are excluded, and we instead inject a
+    robots/noindex meta tag to help prevent any unwanted visits from search engines. */
+    else { %>
+        <meta name="robots" content="noindex">
+    <% } %>
+</head>
+<body>
+<!--class="aurora with-panel with-panel-left-cover">-->
+
+<div id="react-app">
+</div>
+<script>
+    window.csrf = '<%= _csrf %>';
+    window.stripePublishableKey = '<%= sails.config.custom.stripePublishableKey %>';
+</script>
+<script src="<%- bundlePath %>"></script>
+
+<% /* Load Stripe Checkout */ %>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+</body>
+
+<%
+if (sails.config.environment === 'production') { %>
+    <!-- Google Analytics, Google Tag Manager, etc. -->
+<% }
+/* Otherwise, any such scripts are excluded, and we instead inject a
+robots/noindex meta tag to help prevent any unwanted visits from search engines. */
+else { %>
+
+    <meta name="robots" content="noindex">
+<% } %>
+
+<script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
+
+
+</html>

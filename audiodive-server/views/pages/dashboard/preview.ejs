@@ -1,0 +1,203 @@
+<% if(typeof me === 'undefined') {
+  // In case we're displaying the 404 or 500 page and relevant code in the "custom" hook was not able to run,
+  // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
+  var me = undefined;
+} %>
+
+<html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+  <% cssUrls.forEach(url => { %>
+  <link href="<%= url %>" rel="stylesheet">
+  <% }) %>
+
+  <meta charset="UTF-8">
+      <script src="/js/tsparticles3.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.0.13/fontfaceobserver.standalone.js" integrity="sha256-zY8Pmq4BuvlVm12gHfQKRy92UAZcWNqQzBS29Pcdlqk=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+  <style>
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+      height: 720px;
+      width: 1280px;
+      font-size: 43px;
+    }
+
+    .element {
+      position:absolute;
+      color: #111;
+      line-height: 1.8;
+      z-index: 38;
+      font-size: 30px;
+      overflow: hidden;
+      transform-origin: left top;
+    }
+
+    .textElement, .textBlock {
+        transform-origin: left top;
+        pointer-events: none;
+        z-index: 12;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+    }
+
+    .textElement span, .textBlock span {
+        display: inline-block;
+        cursor: text;
+        padding: 0px 6px;
+        min-width: 40px;
+    }
+
+    .element span {
+      display: inline-block;
+      margin-right: 12px;
+    }
+
+    .debug {
+      position: fixed;
+      color: #111;
+      z-index: 38;
+      background: #fff;
+      font-size: 20px;
+      top: 0;
+      left: 0;
+      /* padding: 10px; */
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      font-family: 'Helvetica';
+      padding-left: 20px;
+      display: none;
+    }
+    .dynamic-area {
+      position:absolute;
+      z-index: 38;
+      overflow: hidden;
+    }
+    .layout-editor-dynamic-view-mode {
+      position:absolute;
+      z-index: 38;
+      overflow: hidden;
+      transform-origin: left top;
+    }
+    .bg-element {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      z-index: 1;
+      overflow: hidden;
+      /*transform-origin: left top;*/
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .bg-static {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      z-index: 1;
+    }
+
+    .vis-element {
+      position: absolute;
+      top:0;
+      left:0;
+      z-index: 30;
+      transform-origin: left top;
+    }
+
+
+
+    svg .frequency rect {
+
+    }
+    svg .frequency rect.background {
+      fill: none;
+      stroke: none;
+    }
+    svg.light path {
+      stroke: black;
+    }
+    svg.light .frequency rect.frequency-bar {
+      fill: black;
+    }
+
+    .canvas-container {
+      position: absolute !important;
+      height: 720px;
+      width: 1280px;
+      top:0;
+      left:0;
+      z-index: 1;
+    }
+
+    .layout {
+      position: absolute;
+      height: 720px;
+      width: 1280px;
+      top:0;
+      left:0;
+    }
+
+    .layout-container {
+      opacity: 0;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+
+    #layouts {
+      height:720px;
+      width: 1280px;
+    }
+  </style>
+</head>
+
+<body id="fab" data-clip="<%= clip %>" data-layouts="<%= layoutConfigs %>">
+<div id="react-preview"></div>
+<script src="<%= bundlePath %>"></script>
+
+<script>
+  window.csrf = '<%= _csrf %>';
+</script>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,46 @@
+service: delayed-jobs
+runtime: nodejs16
+env: standard
+
+env_variables:
+  SCRIPT: worker.js
+  PLAYWRIGHT_BROWSERS_PATH: /workspace/playwright
+  #PLAYWRIGHT_BROWSERS_PATH: /root/.cache/ms-playwright yarn add playwright-firefox@1.28.1
+  #PLAYWRIGHT_BROWSERS_PATH: /usr/lib/playwright yarn add playwright-firefox@1.28.1
+  #PLAYWRIGHT_BROWSERS_PATH: /usr/lib/playwright yarn test
+  #PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
+
+#manual_scaling:
+#  instances: 1
+
+beta_settings:
+    cloud_sql_instances: podbot-158909:us-central1:audiodive-1
+
+#resources:
+#  cpu: 2
+#  memory_gb: 2
+#  disk_size_gb: 50
+#
+#resources:
+#  disk_size_gb: 50
+
+instance_class: B4
+
+basic_scaling:
+  max_instances: 1
+  idle_timeout: 20m
+
+#basic_scaling:
+#  max_instances: 1
+#  idle_timeout: 2m
+
+#automatic_scaling:
+#  min_num_instances: 1
+#  cpu_utilization:
+#    target_utilization: 0.85
+
+#handlers:
+#- url: /daily
+#  login: admin
+#  script: daily-job.js

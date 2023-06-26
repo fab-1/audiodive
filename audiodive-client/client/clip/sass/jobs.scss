@@ -1,0 +1,50 @@
+.jobs-overlay {
+    width:400px;
+    height: 200px;
+    overflow: auto;
+    display: flex;
+
+    .no-active-job {
+        margin: auto;
+    }
+
+    li {
+        height: 100px;
+        width:100%;
+        padding: 15px;
+
+        .bp3-text-muted {
+            font-style: italic;
+            float:right;
+        }
+
+        h5 {
+            //display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            justify-content: space-between;
+
+
+            .bp3-tag {
+            }
+
+            span.label {
+                width: 260px;
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-weight: 500;
+
+                .bp3-icon {
+                    margin-top: 2px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &:nth-child(2n) {
+            background: $light-gray5;
+        }
+    }
+}

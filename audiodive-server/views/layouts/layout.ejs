@@ -1,0 +1,211 @@
+<% if(typeof me === 'undefined') {
+    // In case we're displaying the 404 or 500 page and relevant code in the "custom" hook was not able to run,
+    // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
+    var me = undefined;
+} %><!DOCTYPE html>
+<html>
+<head>
+    <title>AudioDive</title>
+
+    <% /* Viewport tag for sensible mobile support */ %>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+
+    <meta name="theme-color" content="#202b33">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <meta name="description" content="Create mind blowing video for your music, podcast or meditation">
+
+    <meta property="og:title" content="AudioDive">
+    <meta property="og:description" content="Create mind blowing video for your music, podcast or meditation">
+    <meta property="og:image" content="/images/bird_logo.png">
+    <meta property="og:image:width" content="1500">
+    <meta property="og:image:height" content="800">
+    <meta property="og:site_name" content="AudioDive">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://audiodive.app">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AudioDive">
+    <meta name="twitter:description" content="Create mind blowing video for your music, podcast or meditation">
+    <meta name="twitter:image" content="https://f7appstore.netlify.com/static/share.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/images/bird_logo.png">
+    <link rel="icon" href="/images/bird_logo.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <% /* Script tags should normally be included further down the page- but any
+    scripts that load fonts (e.g. Fontawesome ≥v5) are special exceptions to the
+    rule. (Include them up here along with any hard-coded «link» tags for Typekit,
+    Google Fonts, etc. - above the «body» to prevent the page flickering when fonts
+    load.) */ %>
+
+    <% /* Certain scripts, normally analytics tools like Google Tag Manager and
+    Google Analytics, should only be included in production: */
+    if (sails.config.environment === 'production') { %>
+        <!-- Google Analytics, Google Tag Manager, etc. -->
+    <% }
+    /* Otherwise, any such scripts are excluded, and we instead inject a
+    robots/noindex meta tag to help prevent any unwanted visits from search engines. */
+    else { %>
+        <meta name="robots" content="noindex">
+    <% } %>
+
+    <% /*
+        Stylesheets
+        ========================
+
+        Stylesheets can be hard-coded as «link» tags, automatically injected
+        by the asset pipeline between "STYLES" and "STYLES END", or both.
+        (https://sailsjs.com/docs/concepts/assets/task-automation)
+    */ %>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
+
+    <% /* Auto-injected «link» tags: */ %>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+
+
+</head>
+<body>
+<div id="page-wrap" class="<%= sails.iframe?'iframe':'' %>">
+
+    <% if(!sails.iframe) { %>
+
+        <header id="page-header" class="navbar navbar-expand-sm flex-column flex-md-row justify-content-between">
+            <a id="logo-container" href="/">
+
+            </a>
+
+
+
+            <div class="navbar-nav flex-row">
+                <!-- LOGGED-IN NAVIGATION -->
+                <% if(me) { %>
+                    <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/contact">Help</a>
+                    <!-- Only in desktop nav -->
+                    <div class="nav-item dropdown d-none d-sm-block">
+                        <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                        <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
+                            <a class="dropdown-item" href="/account">Settings</a>
+                            <a class="dropdown-item" href="/logout">Sign out</a>
+                        </div>
+                    </div>
+                    <!-- Only in mobile nav -->
+                    <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/account">Account Settings</a>
+                    <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/logout">Sign out</a>
+                <% } else { %>
+                    <!-- LOGGED-OUT NAVIGATION -->
+                    <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/login">Log in</a>
+                    <!-- Only in desktop nav -->
+                    <div class="form-inline d-none ml-2 d-md-block" >
+                        <a class="btn btn-outline-info" href="/signup">Sign up</a>
+                    </div>
+                    <!-- Only in mobile nav -->
+                    <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/signup">Sign up</a>
+                <% } %>
+            </div>
+        </header>
+    <% } %>
+
+    <!-- Alert if email has not been confirmed -->
+    <% if(me&&me.emailChangeCandidate) { %>
+        <div class="container-fluid">
+            <div class="alert alert-secondary mt-2" role="alert">
+                Your updated email address needs verification. Until you click the link sent to <strong><%= me.emailChangeCandidate %></strong>, you'll still need to sign in as <strong><%= me.emailAddress %></strong>.
+            </div>
+        </div>
+    <% } else if(me&&me.emailStatus === 'unconfirmed') { %>
+        <div class="container-fluid">
+            <div class="alert alert-secondary mt-2" role="alert">
+                Your email address still needs verification. Your account access may be limited until you click the link sent to <strong><%= me.emailChangeCandidate ? me.emailChangeCandidate : me.emailAddress%></strong>.
+            </div>
+        </div>
+    <% } %>
+
+    <%- body %>
+
+    <% if(!sails.iframe) { %>
+
+        <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
+            <div class="nav">
+                <small class="nav-item"><a class="nav-link text-info" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
+                <small class="nav-item"><a class="nav-link text-info" href="/legal/terms">Terms<span class="d-none d-sm-inline"> of use</span></a></small>
+                <small class="nav-item"><a class="nav-link text-info" href="/legal/privacy">Privacy<span class="d-none d-sm-inline"> policy</span></a></small>
+                <% if(me) { %>
+                    <small class="nav-item"><a class="nav-link text-info" href="/logout">Sign out</a></small>
+                <% } %>
+            </div>
+            <small class="copy">Copyright &copy; 2019 AudioDive. <br class="xs-only"/>All rights reserved.</small>
+        </footer>
+
+    <% } %>
+</div>
+
+<% /*
+      Client-side JavaScript
+      ========================
+
+      Scripts can be hard-coded as «script» tags, automatically injected
+      by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
+      (https://sailsjs.com/docs/concepts/assets/task-automation)
+    */ %>
+
+
+<% /* Auto-injected «script» tags: */ %>
+<!--SCRIPTS-->
+<script src="/dependencies/lodash.js"></script>
+<script src="/dependencies/jquery.min.js"></script>
+<script src="/dependencies/vue.js"></script>
+<script src="/dependencies/vue-router.js"></script>
+<script src="/dependencies/bootstrap-4/bootstrap-4.bundle.js"></script>
+<script src="/dependencies/cloud.js"></script>
+<script src="/dependencies/moment.js"></script>
+<script src="/dependencies/parasails.js"></script>
+<script src="/js/cloud.setup.js"></script>
+<script src="/js/components/ajax-button.component.js"></script>
+<script src="/js/components/ajax-form.component.js"></script>
+<script src="/js/components/js-timestamp.component.js"></script>
+<script src="/js/components/modal.component.js"></script>
+<script src="/js/utilities/open-stripe-checkout.js"></script>
+<script src="/js/pages/498.page.js"></script>
+<script src="/js/pages/account/account-overview.page.js"></script>
+<script src="/js/pages/account/edit-password.page.js"></script>
+<script src="/js/pages/account/edit-profile.page.js"></script>
+<script src="/js/pages/contact.page.js"></script>
+<script src="/js/pages/dashboard/welcome.page.js"></script>
+<script src="/js/pages/entrance/confirmed-email.page.js"></script>
+<script src="/js/pages/entrance/forgot-password.page.js"></script>
+<script src="/js/pages/entrance/login.page.js"></script>
+<script src="/js/pages/entrance/new-password.page.js"></script>
+<script src="/js/pages/entrance/signup.page.js"></script>
+<script src="/js/pages/faq.page.js"></script>
+<script src="/js/pages/homepage.page.js"></script>
+<script src="/js/pages/legal/privacy.page.js"></script>
+<script src="/js/pages/legal/terms.page.js"></script>
+<script src="/js/pages/manage_stuff.page.js"></script>
+<script src="/js/tsparticles2.min.js"></script>
+<script src="/js/tsparticles3.js"></script>
+<!--SCRIPTS END-->
+
+<script>
+    TweenLite.set(".bird, .microphone", {visibility:"visible"});
+    var tl = new TimelineLite()
+    tl.from(".bird, .microphone", 0.5, {drawSVG:'10% 10%', ease: Power0.easeNone}).to(".line-audiodive", 0.4, {opacity: 1, ease: Power1.easeOut})
+</script>
+
+<% /* Load Stripe Checkout */ %>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<% /* Delete the global `self` to help avoid client-side bugs.
+    (see https://developer.mozilla.org/en-US/docs/Web/API/Window/self) */ %>
+<script>delete window.self;</script>
+
+</body>
+</html>

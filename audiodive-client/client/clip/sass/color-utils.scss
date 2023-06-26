@@ -1,0 +1,32 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+$word-dark: $cobalt1;
+$word-medium: $cobalt4;
+$word-light: $cobalt5;
+$word-dark-transparent: rgba($cobalt1, 0.4);
+$word-medium-transparent: rgba($cobalt4, 0.5);
+$word-light-transparent: rgba($cobalt5, 0.5);
+$word-dark-super-transparent: rgba($cobalt1, 0.1);
+$word-medium-super-transparent: rgba($cobalt4, 0.1);
+$word-light-super-transparent: rgba($cobalt5, 0.1);
+
+$media-dark: $vermilion2;
+$media-medium: $vermilion4;
+$media-light: $vermilion5;
+$media-dark-transparent: rgba($vermilion2, 0.8);
+$media-medium-transparent: rgba($vermilion4, 0.5);
+$media-light-transparent: rgba($vermilion5, 0.5);
+$media-dark-super-transparent: rgba($vermilion2, 0.1);
+$media-medium-super-transparent: rgba($vermilion4, 0.1);
+$media-light-super-transparent: rgba($vermilion5, 0.1);
+
+
+$vis-dark: $indigo2;
+$vis-medium: $indigo4;
+$vis-light: $indigo5;
+$vis-dark-transparent: rgba($indigo2, 0.8);
+$vis-medium-transparent: rgba($indigo4, 0.5);
+$vis-light-transparent: rgba($indigo5, 0.5);
+$vis-dark-super-transparent: rgba($indigo2, 0.1);
+$vis-medium-super-transparent: rgba($indigo4, 0.1);
+$vis-light-super-transparent: rgba($indigo5, 0.1);

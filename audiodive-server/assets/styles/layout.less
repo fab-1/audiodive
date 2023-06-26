@@ -1,0 +1,148 @@
+@footer-height: 40px;
+@container-md-max-width: 1100px;
+
+[v-cloak] { display: none; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#page-wrap {
+  height: 100%;
+  /* lesshint-disable */height: auto !important;/* lesshint-enable */
+  // ^^The above is to disable "importantRule" and "duplicateProperty" rules.
+  min-height: 100%;
+  position: relative;
+  padding-bottom: @footer-height;
+
+  header {
+    .logo {
+      height: 30px;
+    }
+    a {
+      cursor: pointer;
+    }
+    .dropdown-menu.account-menu {
+      left: auto;
+      right: 0px;
+    }
+  }
+
+  // App-wide styles for our ajax buttons
+  .ajax-button {
+    .ajax-button();
+  }
+}
+
+#page-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  height: @footer-height;
+  width: 100%;
+  position: fixed;
+  background: #FFF;
+  left: 0px;
+  bottom: 0px;
+
+
+  .xs-only {
+    display: none;
+  }
+}
+
+body.detected-mobile {
+  // Above and beyond the media queries below, this selector (which relies on
+  // `parasails` automatically attaching this class, if appropriate) contains
+  // styles intended to be activated specifically when loaded from a recognized
+  // mobile device, regardless of viewport dimensions.  This includes tablet
+  // devices (like the iPad) as well as handset devices (like the iPhone).
+  // …
+}
+
+@media (max-width: 800px) {
+  #page-wrap {
+
+    #page-footer {
+      height: 75px;
+      .copy, .nav {
+        width: 100%;
+        display: block;
+        text-align: center;
+        .nav-item {
+          display: inline-block;
+          a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  #page-wrap {
+
+    #page-footer {
+      height: 85px;
+      .xs-only {
+        display: block;
+      }
+    }
+  }
+}
+
+.generic-form {
+  width: 100%;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bird, .microphone {
+  visibility: hidden;
+}
+
+.line-audiodive {
+  opacity: 0;
+}
+
+#logo-container {
+  //width:500px;
+}
+
+.jumbotron-heading {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.jumbotron h3 {
+  margin-top: .5rem;
+  margin-bottom: 2rem;
+}
+
+.carousel-item {
+  padding-bottom: 40px;
+}
+
+.carousel .carousel-indicators {
+  bottom: -38px;
+}
+
+.carousel .carousel-caption {
+  bottom: -26px;
+}
+
+.carousel .carousel-control-next, .carousel .carousel-control-prev {
+  bottom: 280px;
+}
+
+h6.h6 {
+  margin-top: .5rem;
+  margin-bottom: 2rem;
+}
+
+.embed-responsive {
+  margin: 30px auto 0;
+  max-height: 400px;
+  max-width: 600px;
+}

@@ -1,0 +1,71 @@
+@mixin rgba-background($hexcolor, $opacity) {
+  background-color: $hexcolor;
+  background-color: rgba($hexcolor, $opacity) !important;
+}
+
+@mixin rgba-border-color($hexcolor, $opacity) {
+  border-color: rgba($hexcolor, $opacity) !important;
+}
+
+
+$red: #e6194b;
+$yellow: #f39c12;
+$blue: #0073b7;
+$teal: #39CCCC;
+$coral: #ffd8b1;
+
+$lime: #01FF70;
+$orange: #FF851B;
+$fuchsia: #F012BE;
+$purple: #605ca8;
+$maroon: #D81B60;
+$brown: #aa6e28;
+$olive: #3D9970;
+
+$blocksColors: $red, $orange, $blue, $lime, $fuchsia, $yellow, $purple, $maroon, $olive, $brown, $teal;
+
+@for $i from 1 through length($blocksColors) {
+  $blocksColors: append($blocksColors, nth($blocksColors, $i));
+}
+
+@for $i from 1 through length($blocksColors) {
+  $blocksColors: append($blocksColors, nth($blocksColors, $i));
+}
+
+@for $i from 1 through length($blocksColors) {
+
+  $index: $i - 1;
+
+  .color-block-#{$index} {
+    @include rgba-background(nth($blocksColors, $i), 0.95);
+  }
+
+  .color-border-#{$index} {
+    border-color: rgba(nth($blocksColors, $i), 0.8) !important;
+  }
+
+  .color-border-light-#{$index} {
+    border-color: rgba(nth($blocksColors, $i), 0.5) !important;
+  }
+
+  .colored-input-#{$index} {
+    border-color: rgba(nth($blocksColors, $i), 0.8) !important;
+    @include rgba-background(nth($blocksColors, $i), 0.1);
+  }
+
+  .color-block-#{$index}-selected {
+    @include rgba-background(darken(nth($blocksColors, $i), 20), 0.8);
+  }
+
+  .color-background-#{$index} {
+    @include rgba-background(nth($blocksColors, $i), 0.2);
+  }
+
+  .wavesurfer-region.selected-clip-word.block-#{$index}-selected {
+    @include rgba-background(nth($blocksColors, $i), 0.3);
+
+    .wavesurfer-handle {
+      @include rgba-border-color(nth($blocksColors, $i), 1);
+    }
+  }
+}

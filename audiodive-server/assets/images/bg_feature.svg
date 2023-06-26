@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="143.901985%" y2="27.7259769%" id="linearGradient-1">
+            <stop stop-color="#48AFF0" offset="0%"></stop>
+            <stop stop-color="#137CBD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="AudioDive-Webpage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Final-Website-2" transform="translate(-187.000000, -533.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <circle id="Oval-4" cx="225" cy="571" r="38"></circle>
+        </g>
+    </g>
+</svg>

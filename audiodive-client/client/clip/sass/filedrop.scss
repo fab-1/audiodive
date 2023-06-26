@@ -1,0 +1,33 @@
+.file-drop {
+  /* relatively position the container bc the contents are absolute */
+  position: relative;
+  width: 100%;
+}
+
+.file-drop > .file-drop-target {
+
+  /* --------------- */
+}
+
+.file-drop > .file-drop-target.file-drop-dragging-over-frame {
+  /* overlay a black mask when dragging over the frame */
+  border: none;
+  background-color: rgba(0, 0, 0, 0.65);
+  box-shadow: none;
+  z-index: 50;
+  opacity: 1.0;
+  /* --------------- */
+
+  /* typography */
+  color: white;
+  /* --------------- */
+}
+
+.file-drop > .file-drop-target.file-drop-dragging-over-target .bp3-card {
+  /* turn stuff orange when we are dragging over the target */
+  //color: #ff6e40;
+  //box-shadow: 0 0 13px 3px #ff6e40;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px $blue2;
+  background: rgba(16, 107, 163, 0.2);
+}

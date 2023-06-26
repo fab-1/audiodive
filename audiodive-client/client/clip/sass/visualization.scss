@@ -1,0 +1,23 @@
+
+.vis-element {
+
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: left top;
+
+  svg .frequency rect {
+
+  }
+  svg .frequency rect.background {
+    fill: none;
+    stroke: none;
+  }
+  svg.light path {
+    stroke: black;
+  }
+  svg.light .frequency rect.frequency-bar {
+    fill: black;
+  }
+}
